@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="leaf-icon.png">
   <style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after {
@@ -83,6 +85,15 @@
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo-icon {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
     }
 
     .nav-links {
@@ -601,7 +612,10 @@
   <!-- NAVIGATION -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="#" class="nav-logo">Hana K.</a>
+      <a href="#" class="nav-logo">
+        <img src="leaf-icon.png" alt="Logo" class="nav-logo-icon">
+        Hana K.
+      </a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
