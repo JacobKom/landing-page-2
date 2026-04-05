@@ -253,31 +253,37 @@
     .hero-decor .leaf:nth-child(5) {
       top: 8%; left: 5%;
       animation-delay: -2s;
+      animation-name: floatLeaf0;
     }
 
     .hero-decor .leaf:nth-child(6) {
       top: 60%; right: 6%;
       animation-delay: -6s;
+      animation-name: floatLeaf45m;
     }
 
     .hero-decor .leaf:nth-child(7) {
       bottom: 30%; left: 60%;
       animation-delay: -10s;
+      animation-name: floatLeaf330;
     }
 
     .hero-decor .leaf:nth-child(8) {
       top: 35%; right: 20%;
       animation-delay: -14s;
+      animation-name: floatLeaf120m;
     }
 
     .hero-decor .leaf:nth-child(9) {
       bottom: 10%; left: 25%;
       animation-delay: -18s;
+      animation-name: floatLeaf200;
     }
 
     .hero-decor .leaf:nth-child(10) {
       top: 75%; left: 40%;
       animation-delay: -22s;
+      animation-name: floatLeaf285m;
     }
 
     @keyframes floatShape {
@@ -287,11 +293,52 @@
       75% { opacity: 1; transform: translate(15px, 20px) scale(1.05); }
     }
 
-    @keyframes floatLeaf {
+    /* Leaf 1: no rotation */
+    @keyframes floatLeaf0 {
       0%, 100% { opacity: 0.6; transform: translate(0, 0) rotate(0deg); }
       25% { opacity: 1; transform: translate(12px, -18px) rotate(8deg); }
       50% { opacity: 0.7; transform: translate(-10px, 10px) rotate(-5deg); }
       75% { opacity: 1; transform: translate(8px, 15px) rotate(6deg); }
+    }
+
+    /* Leaf 2: 45deg + mirror */
+    @keyframes floatLeaf45m {
+      0%, 100% { opacity: 0.6; transform: scaleX(-1) rotate(45deg) translate(0, 0); }
+      25% { opacity: 1; transform: scaleX(-1) rotate(53deg) translate(12px, -18px); }
+      50% { opacity: 0.7; transform: scaleX(-1) rotate(40deg) translate(-10px, 10px); }
+      75% { opacity: 1; transform: scaleX(-1) rotate(51deg) translate(8px, 15px); }
+    }
+
+    /* Leaf 3: -30deg */
+    @keyframes floatLeaf330 {
+      0%, 100% { opacity: 0.6; transform: rotate(-30deg) translate(0, 0); }
+      25% { opacity: 1; transform: rotate(-22deg) translate(12px, -18px); }
+      50% { opacity: 0.7; transform: rotate(-35deg) translate(-10px, 10px); }
+      75% { opacity: 1; transform: rotate(-24deg) translate(8px, 15px); }
+    }
+
+    /* Leaf 4: 120deg + mirror */
+    @keyframes floatLeaf120m {
+      0%, 100% { opacity: 0.6; transform: scaleX(-1) rotate(120deg) translate(0, 0); }
+      25% { opacity: 1; transform: scaleX(-1) rotate(128deg) translate(12px, -18px); }
+      50% { opacity: 0.7; transform: scaleX(-1) rotate(115deg) translate(-10px, 10px); }
+      75% { opacity: 1; transform: scaleX(-1) rotate(126deg) translate(8px, 15px); }
+    }
+
+    /* Leaf 5: 200deg */
+    @keyframes floatLeaf200 {
+      0%, 100% { opacity: 0.6; transform: rotate(200deg) translate(0, 0); }
+      25% { opacity: 1; transform: rotate(208deg) translate(12px, -18px); }
+      50% { opacity: 0.7; transform: rotate(195deg) translate(-10px, 10px); }
+      75% { opacity: 1; transform: rotate(206deg) translate(8px, 15px); }
+    }
+
+    /* Leaf 6: -75deg + mirror */
+    @keyframes floatLeaf285m {
+      0%, 100% { opacity: 0.6; transform: scaleX(-1) rotate(-75deg) translate(0, 0); }
+      25% { opacity: 1; transform: scaleX(-1) rotate(-67deg) translate(12px, -18px); }
+      50% { opacity: 0.7; transform: scaleX(-1) rotate(-80deg) translate(-10px, 10px); }
+      75% { opacity: 1; transform: scaleX(-1) rotate(-69deg) translate(8px, 15px); }
     }
 
     /* Hero intro text */
@@ -880,19 +927,19 @@
       <div class="leaf" style="width:90px;height:90px;">
         <img src="assets/leaf-icon.png" alt="">
       </div>
-      <div class="leaf" style="width:70px;height:70px;transform:rotate(45deg) scaleX(-1);">
+      <div class="leaf" style="width:70px;height:70px;">
         <img src="assets/leaf-icon.png" alt="">
       </div>
-      <div class="leaf" style="width:55px;height:55px;transform:rotate(-30deg);">
+      <div class="leaf" style="width:55px;height:55px;">
         <img src="assets/leaf-icon.png" alt="">
       </div>
-      <div class="leaf" style="width:50px;height:50px;transform:rotate(120deg) scaleX(-1);">
+      <div class="leaf" style="width:50px;height:50px;">
         <img src="assets/leaf-icon.png" alt="">
       </div>
-      <div class="leaf" style="width:75px;height:75px;transform:rotate(200deg);">
+      <div class="leaf" style="width:75px;height:75px;">
         <img src="assets/leaf-icon.png" alt="">
       </div>
-      <div class="leaf" style="width:60px;height:60px;transform:rotate(-75deg) scaleX(-1);">
+      <div class="leaf" style="width:60px;height:60px;">
         <img src="assets/leaf-icon.png" alt="">
       </div>
     </div>
