@@ -1668,7 +1668,12 @@
       btn.textContent = 'Odesílám...';
       btn.disabled = true;
 
-      emailjs.sendForm('service_oeaoo7q', 'template_9d5nxzr', this)
+      emailjs.send('service_oeaoo7q', 'template_9d5nxzr', {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: '+420 ' + document.getElementById('phone').value,
+          message: document.getElementById('message').value
+        })
         .then(function() {
           btn.textContent = '✓ Odesláno!';
           btn.style.background = '#2ecc71';
