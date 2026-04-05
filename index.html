@@ -1624,9 +1624,45 @@
       if (!/^[0-9]$/.test(e.key)) e.preventDefault();
     });
 
+    // Email validation: strip diacritics after @, validate format
+    function isValidEmail(email) {
+      var parts = email.split('@');
+      if (parts.length !== 2) return false;
+      var domain = parts[1];
+      // Domain must be ASCII only (no diacritics)
+      if (/[^a-zA-Z0-9.\-]/.test(domain)) return false;
+      // Basic structure check
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    }
+
+    // Auto-strip diacritics from email on input
+    document.getElementById('email').addEventListener('input', function() {
+      var val = this.value;
+      // Replace common Czech diacritics with ASCII equivalents
+      var map = {'á':'a','č':'c','ď':'d','é':'e','ě':'e','í':'i','ň':'n','ó':'o','ř':'r','š':'s','ť':'t','ú':'u','ů':'u','ý':'y','ž':'z','Á':'A','Č':'C','Ď':'D','É':'E','Ě':'E','Í':'I','Ň':'N','Ó':'O','Ř':'R','Š':'S','Ť':'T','Ú':'U','Ů':'U','Ý':'Y','Ž':'Z'};
+      var atIdx = val.indexOf('@');
+      if (atIdx >= 0) {
+        var before = val.slice(0, atIdx + 1);
+        var after = val.slice(atIdx + 1);
+        after = after.split('').map(function(c) { return map[c] || c; }).join('');
+        this.value = before + after;
+      }
+    });
+
     // EmailJS form handler
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
+      var emailInput = document.getElementById('email');
+      if (!isValidEmail(emailInput.value)) {
+        emailInput.style.borderColor = '#e74c3c';
+        emailInput.style.boxShadow = '0 0 0 3px rgba(231,76,60,0.15)';
+        emailInput.focus();
+        setTimeout(function() {
+          emailInput.style.borderColor = '';
+          emailInput.style.boxShadow = '';
+        }, 3000);
+        return;
+      }
       const btn = this.querySelector('.btn-primary');
       const originalText = btn.textContent;
       btn.textContent = 'Odesílám...';
