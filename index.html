@@ -675,46 +675,78 @@
       background: var(--bg-light);
     }
 
-    .approach-split {
-      display: flex;
-      gap: 40px;
-      align-items: stretch;
-    }
-
-    .approach-image {
-      flex-shrink: 0;
-      width: 50%;
-      overflow: hidden;
+    .approach-method {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
       border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
     }
 
-    .approach-image img {
+    .approach-method h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+
+    .approach-method p {
+      font-size: 0.92rem;
+      color: var(--text-medium);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .approach-method ul {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+    }
+
+    .approach-method ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-medium);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .approach-method ul li span {
+      color: var(--primary);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .approach-method .note {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: var(--bg-light);
+      border-radius: 8px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .approach-image-full {
+      margin-top: 32px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .approach-image-full img {
       width: 100%;
-      height: 100%;
+      max-height: 400px;
       object-fit: cover;
       border-radius: 16px;
       filter: brightness(1.05);
     }
 
-    .approach-content {
-      flex: 1;
-    }
-
-    .approach-content h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .approach-content p {
-      font-size: 0.95rem;
-      color: var(--text-medium);
-      margin-bottom: 12px;
-      line-height: 1.8;
-    }
-
     .price-info {
-      margin-top: 24px;
+      margin-top: 0;
       padding: 16px 20px;
       background: var(--bg-white);
       border-radius: 12px;
@@ -980,17 +1012,12 @@
         width: 200px;
       }
 
-      .approach-split {
-        flex-direction: column;
+      .approach-method {
+        padding: 24px;
       }
 
-      .approach-image {
-        width: 100%;
-        max-height: 300px;
-      }
-
-      .approach-image img {
-        max-height: 300px;
+      .approach-image-full img {
+        max-height: 260px;
       }
 
       .credentials-grid {
@@ -1059,6 +1086,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#o-mne">O mně</a></li>
         <li><a href="#s-cim-pracuji">S čím pracuji</a></li>
+        <li><a href="#pristup">Můj přístup</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
       </ul>
     </div>
@@ -1262,47 +1290,76 @@
   </section>
 
   <!-- MŮJ TERAPEUTICKÝ PŘÍSTUP -->
-  <section class="section approach">
+  <section class="section approach" id="pristup">
     <div class="section-container">
-      <div class="approach-split">
-        <div class="approach-image">
-          <img src="assets/room.jpg" alt="Terapeutická místnost" loading="lazy">
-        </div>
-        <div class="approach-content">
-          <h3>Můj terapeutický přístup</h3>
-        <p>V terapeutické práci věřím v sílu bezpečného a respektujícího vztahu. Nabízím prostor, kde není třeba se přetvařovat, kde není potřeba výkon, kde můžeš být takový/á, jaký/á jsi právě teď.
+      <h2 class="section-title">Můj terapeutický přístup</h2>
+      <p class="section-subtitle">Dvě formy spolupráce podle vašich potřeb</p>
 
-Nesoudím, nenabízím rychlá řešení, ale naslouchám. Sdílím své postřehy a zkušenosti, ale především hledám spolu s klientem jeho vlastní cestu – takovou, která vychází z jeho potřeb, tempa a hodnot.</p>
-        <div class="price-info" style="padding: 24px 28px;">
-          <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 16px;">Jak pracuji</h4>
-          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-              <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-              Individuální terapie pro dospělé a dospívající od 16 let
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-              <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-              Délka sezení: 50 minut
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-              <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-              Cena: 900 Kč
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-              <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-              Forma: osobně (v případě potřeby i online)
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-              <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-              Platba: hotově nebo převodem (možnost QR kódu)
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-              <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-              Změna termínu: nejpozději 24 hodin předem
-            </li>
-          </ul>
-        </div>
-        </div>
+      <!-- 1. Terapie a poradenství -->
+      <div class="approach-method">
+        <h3>Terapie a poradenství</h3>
+        <p>V terapeutické práci věřím v sílu bezpečného a respektujícího vztahu. Nabízím prostor, kde není třeba se přetvařovat, kde není potřeba výkon, kde můžeš být takový/á, jaký/á jsi právě teď. Nesoudím, nenabízím rychlá řešení, ale naslouchám.</p>
+        <p>Dlouhodobější spolupráce umožňuje jít do hloubky a věnovat se tématům, která ovlivňují vaše fungování, vztahy i prožívání. Společně pracujeme na:</p>
+        <ul>
+          <li><span>✓</span> porozumění opakujícím se vzorcům v myšlení a chování</li>
+          <li><span>✓</span> zpracování náročných emocí a zkušeností</li>
+          <li><span>✓</span> budování zdravějších vztahů k sobě i druhým</li>
+          <li><span>✓</span> hledání vlastní cesty a hodnot</li>
+        </ul>
+        <p>Frekvence setkání je obvykle jednou týdně nebo jednou za dva týdny, podle aktuální potřeby. Délka spolupráce závisí na vašich cílech – může trvat několik měsíců i déle.</p>
+        <p>Tato forma je vhodná pro ty, kteří chtějí pracovat na hlubší změně a jsou připraveni věnovat čas a prostor svému vnitřnímu růstu. Sdílím své postřehy a zkušenosti, ale především hledám spolu s klientem jeho vlastní cestu – takovou, která vychází z jeho potřeb, tempa a hodnot.</p>
+      </div>
+
+      <!-- 2. Krátkodobá podpora -->
+      <div class="approach-method">
+        <h3>Krátkodobá podpora (krizová intervence) v náročné životní situaci</h3>
+        <p>Někdy se ocitneme v situaci, která je příliš zahlcující, nečekaná nebo emočně náročná. Může jít o ztrátu, rozchod, vyčerpání, úzkosti, náhlou změnu nebo jiné období, kdy je těžké se zorientovat a zvládat běžné fungování.</p>
+        <p>Nabízím krátkodobou podporu zaměřenou na zvládnutí takové situace. Spolupráce obvykle probíhá v rozsahu 1–5 setkání a soustředí se na:</p>
+        <ul>
+          <li><span>✓</span> zklidnění a stabilizaci</li>
+          <li><span>✓</span> prostor pro prožití a zpracování emocí</li>
+          <li><span>✓</span> zorientování se v situaci</li>
+          <li><span>✓</span> hledání vlastních zdrojů a možností, jak dál</li>
+        </ul>
+        <p>Setkání může být jednorázové, nebo na sebe může navázat několik dalších podle potřeby. Tato forma spolupráce je vhodná pro aktuální, ohraničenou situaci.</p>
+        <div class="note"><strong>Služba nenahrazuje krizovou linku ani akutní psychiatrickou péči.</strong> Pokud se nacházíte v bezprostředním ohrožení nebo potřebujete okamžitou pomoc, doporučuji obrátit se na krizové služby/linky.</div>
+        <p style="margin-top: 16px;">V případě potřeby je možné po odeznění akutní situace navázat i dlouhodobější psychoterapeutickou spoluprací.</p>
+      </div>
+
+      <!-- Jak pracuji -->
+      <div class="price-info" style="padding: 24px 28px;">
+        <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 16px;">Jak pracuji</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
+            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
+            Individuální terapie pro dospělé a dospívající od 16 let
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
+            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
+            Délka sezení: 50 minut
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
+            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
+            Cena: 900 Kč
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
+            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
+            Forma: osobně (v případě potřeby i online)
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
+            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
+            Platba: hotově nebo převodem (možnost QR kódu)
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
+            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
+            Změna termínu: nejpozději 24 hodin předem
+          </li>
+        </ul>
+      </div>
+
+      <!-- Obrázek místnosti -->
+      <div class="approach-image-full">
+        <img src="assets/room.jpg" alt="Terapeutická místnost" loading="lazy">
       </div>
     </div>
   </section>
@@ -1402,6 +1459,7 @@ Nesoudím, nenabízím rychlá řešení, ale naslouchám. Sdílím své postře
           <ul>
             <li><a href="#o-mne">O mně</a></li>
             <li><a href="#s-cim-pracuji">S čím pracuji</a></li>
+            <li><a href="#pristup">Můj přístup</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
           </ul>
         </div>
