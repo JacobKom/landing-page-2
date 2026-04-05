@@ -1521,8 +1521,9 @@
           <div class="form-group">
             <input type="text" id="name" name="name" placeholder="Vaše jméno" required>
           </div>
-          <div class="form-group">
+          <div class="form-group" style="position: relative;">
             <input type="email" id="email" name="email" placeholder="E-mailová adresa" required>
+            <span id="email-warning" style="display:none; color:#e74c3c; font-size:0.78rem; margin-top:6px; position:absolute; bottom:-22px; left:4px;">⚠ E-mail nesmí obsahovat diakritiku (č, š, ž…)</span>
           </div>
           <div class="form-group phone-group">
             <span class="phone-prefix">+420</span>
@@ -1635,17 +1636,39 @@
       return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
     }
 
-    // Auto-strip diacritics from email on input
+    // Email diacritics detection: warn + auto-correct after @ and after dots
     document.getElementById('email').addEventListener('input', function() {
       var val = this.value;
-      // Replace common Czech diacritics with ASCII equivalents
+      var warning = document.getElementById('email-warning');
+      var diacriticRegex = /[áčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]/;
       var map = {'á':'a','č':'c','ď':'d','é':'e','ě':'e','í':'i','ň':'n','ó':'o','ř':'r','š':'s','ť':'t','ú':'u','ů':'u','ý':'y','ž':'z','Á':'A','Č':'C','Ď':'D','É':'E','Ě':'E','Í':'I','Ň':'N','Ó':'O','Ř':'R','Š':'S','Ť':'T','Ú':'U','Ů':'U','Ý':'Y','Ž':'Z'};
       var atIdx = val.indexOf('@');
       if (atIdx >= 0) {
-        var before = val.slice(0, atIdx + 1);
-        var after = val.slice(atIdx + 1);
-        after = after.split('').map(function(c) { return map[c] || c; }).join('');
-        this.value = before + after;
+        var afterAt = val.slice(atIdx + 1);
+        if (diacriticRegex.test(afterAt)) {
+          // Show warning
+          warning.style.display = 'block';
+          this.style.borderColor = '#e74c3c';
+          this.style.boxShadow = '0 0 0 3px rgba(231,76,60,0.15)';
+          // Auto-correct after short delay so user sees the warning
+          var self = this;
+          clearTimeout(self._diacTimer);
+          self._diacTimer = setTimeout(function() {
+            var v = self.value;
+            var ai = v.indexOf('@');
+            if (ai >= 0) {
+              var before = v.slice(0, ai + 1);
+              var after = v.slice(ai + 1);
+              after = after.split('').map(function(c) { return map[c] || c; }).join('');
+              self.value = before + after;
+            }
+            setTimeout(function() {
+              warning.style.display = 'none';
+              self.style.borderColor = '';
+              self.style.boxShadow = '';
+            }, 2000);
+          }, 600);
+        }
       }
     });
 
