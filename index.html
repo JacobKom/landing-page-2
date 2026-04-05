@@ -154,7 +154,7 @@
       justify-content: center;
       text-align: center;
       padding: 120px 24px 80px;
-      background: linear-gradient(160deg, #e6faf7 0%, #eefcfa 20%, #f4fdfb 40%, #f8fefd 60%, #ffffff 100%);
+      background: linear-gradient(160deg, #d4f5f0 0%, #e2f9f5 15%, #eefcfa 35%, #f6fefc 55%, #ffffff 100%);
       position: relative;
       overflow: hidden;
     }
@@ -167,16 +167,18 @@
       width: 100%;
       height: 100%;
       background:
-        /* Main diagonal aurora beam - light teal */
-        linear-gradient(135deg, transparent 20%, rgba(78,205,196,0.12) 35%, rgba(78,205,196,0.22) 42%, rgba(58,181,173,0.15) 48%, transparent 60%),
-        /* Secondary beam - darker teal */
-        linear-gradient(140deg, transparent 30%, rgba(58,181,173,0.08) 42%, rgba(45,160,152,0.14) 47%, rgba(78,205,196,0.10) 52%, transparent 65%),
-        /* Soft glow - mint */
-        linear-gradient(130deg, transparent 15%, rgba(110,225,218,0.10) 30%, rgba(160,240,235,0.08) 40%, transparent 55%),
-        /* Deep accent - emerald hint */
-        linear-gradient(145deg, transparent 40%, rgba(38,140,132,0.06) 50%, rgba(78,205,196,0.10) 55%, transparent 70%),
-        /* Wide soft wash */
-        radial-gradient(ellipse 120% 80% at 30% 70%, rgba(78,205,196,0.08) 0%, transparent 60%);
+        /* Main diagonal aurora beam - vivid teal */
+        linear-gradient(135deg, transparent 15%, rgba(78,205,196,0.28) 30%, rgba(58,181,173,0.38) 40%, rgba(45,160,152,0.25) 50%, transparent 62%),
+        /* Secondary beam - deep emerald */
+        linear-gradient(140deg, transparent 25%, rgba(38,140,132,0.18) 38%, rgba(30,120,112,0.22) 45%, rgba(58,181,173,0.15) 52%, transparent 65%),
+        /* Bright mint highlight */
+        linear-gradient(128deg, transparent 10%, rgba(130,235,225,0.22) 25%, rgba(160,245,238,0.18) 35%, rgba(200,250,245,0.12) 45%, transparent 58%),
+        /* Deep accent beam - dark teal */
+        linear-gradient(148deg, transparent 35%, rgba(25,100,95,0.12) 45%, rgba(38,140,132,0.18) 50%, rgba(58,181,173,0.14) 56%, transparent 68%),
+        /* Soft warm mint wash at bottom */
+        radial-gradient(ellipse 130% 60% at 40% 80%, rgba(78,205,196,0.16) 0%, transparent 55%),
+        /* Top-left bright spot */
+        radial-gradient(circle 300px at 15% 20%, rgba(130,235,225,0.20) 0%, transparent 60%);
       pointer-events: none;
       animation: auroraShift 15s ease-in-out infinite alternate;
     }
@@ -188,26 +190,39 @@
       inset: 0;
       background:
         /* Bright core beam */
-        linear-gradient(135deg, transparent 25%, rgba(160,240,235,0.15) 38%, rgba(78,205,196,0.20) 44%, rgba(110,225,218,0.12) 50%, transparent 60%),
-        /* Soft edge glow */
-        radial-gradient(ellipse 60% 80% at 70% 30%, rgba(58,181,173,0.12) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 60% at 25% 75%, rgba(78,205,196,0.10) 0%, transparent 50%);
+        linear-gradient(135deg, transparent 20%, rgba(160,245,238,0.25) 33%, rgba(78,205,196,0.32) 42%, rgba(110,225,218,0.20) 50%, transparent 60%),
+        /* Right glow - deeper shade */
+        radial-gradient(ellipse 50% 70% at 75% 25%, rgba(38,140,132,0.18) 0%, transparent 50%),
+        /* Left glow - mint */
+        radial-gradient(ellipse 45% 55% at 20% 70%, rgba(130,235,225,0.15) 0%, transparent 50%);
       animation: ambientShift 12s ease-in-out infinite alternate;
       pointer-events: none;
       z-index: 0;
     }
 
+    /* Bottom fade-out for seamless blend into next section */
+    .hero-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.4) 30%, rgba(255,255,255,0.75) 60%, #ffffff 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
     @keyframes auroraShift {
-      0% { opacity: 0.7; transform: translateX(0) translateY(0) scale(1); }
+      0% { opacity: 0.8; transform: translateX(0) translateY(0) scale(1); }
       50% { opacity: 1; transform: translateX(15px) translateY(-10px) scale(1.03); }
-      100% { opacity: 0.8; transform: translateX(-10px) translateY(8px) scale(1.01); }
+      100% { opacity: 0.85; transform: translateX(-10px) translateY(8px) scale(1.01); }
     }
 
     @keyframes ambientShift {
-      0% { opacity: 0.5; transform: scale(1) translate(0, 0); }
-      33% { opacity: 0.9; transform: scale(1.05) translate(10px, -10px); }
-      66% { opacity: 0.6; transform: scale(0.98) translate(-8px, 6px); }
-      100% { opacity: 0.85; transform: scale(1.03) translate(5px, -5px); }
+      0% { opacity: 0.6; transform: scale(1) translate(0, 0); }
+      33% { opacity: 1; transform: scale(1.05) translate(10px, -10px); }
+      66% { opacity: 0.7; transform: scale(0.98) translate(-8px, 6px); }
+      100% { opacity: 0.95; transform: scale(1.03) translate(5px, -5px); }
     }
 
     /* Floating decorative shapes */
@@ -975,6 +990,8 @@
       <span>Více</span>
       <div class="arrow"></div>
     </a>
+    <!-- Bottom fade for smooth blend -->
+    <div class="hero-fade"></div>
   </section>
 
   <!-- O MNĚ -->
