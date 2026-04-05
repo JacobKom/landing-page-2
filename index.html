@@ -909,6 +909,30 @@
       margin-bottom: 20px;
     }
 
+    .phone-group {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .phone-prefix {
+      padding: 12px 14px;
+      background: var(--primary-light);
+      border: 1px solid var(--border);
+      border-right: none;
+      border-radius: 8px 0 0 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      white-space: nowrap;
+      line-height: 1.5;
+    }
+
+    .phone-group input {
+      border-radius: 0 8px 8px 0 !important;
+    }
+
     .form-group input,
     .form-group textarea {
       width: 100%;
@@ -1500,8 +1524,9 @@
           <div class="form-group">
             <input type="email" id="email" name="email" placeholder="E-mailová adresa" required>
           </div>
-          <div class="form-group">
-            <input type="tel" id="phone" name="phone" placeholder="Telefonní číslo" required>
+          <div class="form-group phone-group">
+            <span class="phone-prefix">+420</span>
+            <input type="tel" id="phone" name="phone" placeholder="XXX XXX XXX" required pattern="[0-9]{3} [0-9]{3} [0-9]{3}" maxlength="11" title="Zadejte 9 číslic ve formátu XXX XXX XXX">
           </div>
           <div class="form-group">
             <textarea id="message" name="message" placeholder="Řekněte mi trochu o tom, co vás sem přivádí..." required></textarea>
@@ -1577,6 +1602,26 @@
       link.addEventListener('click', () => {
         document.getElementById('navLinks').classList.remove('active');
       });
+    });
+
+    // Phone input: allow only digits, auto-format as XXX XXX XXX
+    document.getElementById('phone').addEventListener('input', function(e) {
+      let digits = this.value.replace(/\D/g, '');
+      if (digits.length > 9) digits = digits.slice(0, 9);
+      let formatted = '';
+      for (let i = 0; i < digits.length; i++) {
+        if (i === 3 || i === 6) formatted += ' ';
+        formatted += digits[i];
+      }
+      this.value = formatted;
+    });
+
+    // Prevent non-digit paste in phone
+    document.getElementById('phone').addEventListener('keydown', function(e) {
+      const allowed = ['Backspace','Delete','ArrowLeft','ArrowRight','Tab','Home','End'];
+      if (allowed.includes(e.key)) return;
+      if (e.ctrlKey || e.metaKey) return;
+      if (!/^[0-9]$/.test(e.key)) e.preventDefault();
     });
 
     // EmailJS form handler
