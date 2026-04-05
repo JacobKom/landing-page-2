@@ -154,7 +154,7 @@
       justify-content: center;
       text-align: center;
       padding: 120px 24px 80px;
-      background: linear-gradient(180deg, #e8faf8 0%, #f0fdf9 40%, #ffffff 100%);
+      background: linear-gradient(160deg, #e6faf7 0%, #eefcfa 20%, #f4fdfb 40%, #f8fefd 60%, #ffffff 100%);
       position: relative;
       overflow: hidden;
     }
@@ -162,35 +162,52 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(78, 205, 196, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        /* Main diagonal aurora beam - light teal */
+        linear-gradient(135deg, transparent 20%, rgba(78,205,196,0.12) 35%, rgba(78,205,196,0.22) 42%, rgba(58,181,173,0.15) 48%, transparent 60%),
+        /* Secondary beam - darker teal */
+        linear-gradient(140deg, transparent 30%, rgba(58,181,173,0.08) 42%, rgba(45,160,152,0.14) 47%, rgba(78,205,196,0.10) 52%, transparent 65%),
+        /* Soft glow - mint */
+        linear-gradient(130deg, transparent 15%, rgba(110,225,218,0.10) 30%, rgba(160,240,235,0.08) 40%, transparent 55%),
+        /* Deep accent - emerald hint */
+        linear-gradient(145deg, transparent 40%, rgba(38,140,132,0.06) 50%, rgba(78,205,196,0.10) 55%, transparent 70%),
+        /* Wide soft wash */
+        radial-gradient(ellipse 120% 80% at 30% 70%, rgba(78,205,196,0.08) 0%, transparent 60%);
       pointer-events: none;
+      animation: auroraShift 15s ease-in-out infinite alternate;
     }
 
-    /* Animated gradient overlay (ambient video effect) */
+    /* Animated gradient overlay (ambient glow) */
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 80%, rgba(78,205,196,0.25) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(78,205,196,0.20) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 50% 50%, rgba(78,205,196,0.15) 0%, transparent 70%);
+        /* Bright core beam */
+        linear-gradient(135deg, transparent 25%, rgba(160,240,235,0.15) 38%, rgba(78,205,196,0.20) 44%, rgba(110,225,218,0.12) 50%, transparent 60%),
+        /* Soft edge glow */
+        radial-gradient(ellipse 60% 80% at 70% 30%, rgba(58,181,173,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 60% at 25% 75%, rgba(78,205,196,0.10) 0%, transparent 50%);
       animation: ambientShift 12s ease-in-out infinite alternate;
       pointer-events: none;
       z-index: 0;
     }
 
+    @keyframes auroraShift {
+      0% { opacity: 0.7; transform: translateX(0) translateY(0) scale(1); }
+      50% { opacity: 1; transform: translateX(15px) translateY(-10px) scale(1.03); }
+      100% { opacity: 0.8; transform: translateX(-10px) translateY(8px) scale(1.01); }
+    }
+
     @keyframes ambientShift {
-      0% { opacity: 0.6; transform: scale(1) translate(0, 0); }
-      33% { opacity: 1; transform: scale(1.08) translate(15px, -15px); }
-      66% { opacity: 0.7; transform: scale(0.95) translate(-15px, 10px); }
-      100% { opacity: 1; transform: scale(1.05) translate(10px, -10px); }
+      0% { opacity: 0.5; transform: scale(1) translate(0, 0); }
+      33% { opacity: 0.9; transform: scale(1.05) translate(10px, -10px); }
+      66% { opacity: 0.6; transform: scale(0.98) translate(-8px, 6px); }
+      100% { opacity: 0.85; transform: scale(1.03) translate(5px, -5px); }
     }
 
     /* Floating decorative shapes */
