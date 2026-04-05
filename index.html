@@ -1040,6 +1040,8 @@
 
       .about-photo {
         width: 200px;
+        position: static;
+        margin: 0 auto;
       }
 
       .approach-method {
@@ -1184,7 +1186,7 @@
           <img src="assets/hero2.jpg" alt="Hana Komárková – psycholožka">
         </div>
         <div class="about-text" style="margin-bottom: 0;">
-        <p>Absolvovala jsem:</p>
+        <p style="font-size: 1rem; font-weight: 700; color: var(--primary-dark); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--primary); text-decoration-thickness: 2px; margin-bottom: 4px;">Absolvovala jsem:</p>
         <ul class="about-credentials-list">
           <li>
             <span class="check">✓</span>
@@ -1396,7 +1398,10 @@
           <li><span>✓</span> hledání vlastních zdrojů a možností, jak dál</li>
         </ul>
         <p>Setkání může být jednorázové, nebo na sebe může navázat několik dalších podle potřeby. Tato forma spolupráce je vhodná pro aktuální, ohraničenou situaci.</p>
-        <div class="note"><strong>Služba nenahrazuje krizovou linku ani akutní psychiatrickou péči.</strong> Pokud se nacházíte v bezprostředním ohrožení nebo potřebujete okamžitou pomoc, doporučuji obrátit se na krizové služby/linky.</div>
+        <div class="note" style="background: var(--primary-light); border-left: 4px solid var(--primary); color: var(--text-medium); display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; border-radius: 8px; font-size: 0.85rem; line-height: 1.6;">
+              <span style="font-size: 1.3rem; flex-shrink: 0;">⚠️</span>
+              <div><strong style="color: var(--text-dark);">Služba nenahrazuje krizovou linku ani akutní psychiatrickou péči.</strong> Pokud se nacházíte v bezprostředním ohrožení nebo potřebujete okamžitou pomoc, doporučuji obrátit se na krizové služby/linky.</div>
+            </div>
         <p style="margin-top: 16px;">V případě potřeby je možné po odeznění akutní situace navázat i dlouhodobější psychoterapeutickou spoluprací.</p>
       </div>
 
@@ -1493,7 +1498,7 @@
             <input type="email" id="email" name="email" placeholder="E-mailová adresa" required>
           </div>
           <div class="form-group">
-            <input type="tel" id="phone" name="phone" placeholder="Telefonní číslo">
+            <input type="tel" id="phone" name="phone" placeholder="Telefonní číslo (volitelné)">
           </div>
           <div class="form-group">
             <textarea id="message" name="message" placeholder="Řekněte mi trochu o tom, co vás sem přivádí..." required></textarea>
