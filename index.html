@@ -570,6 +570,33 @@
       margin-bottom: 0;
     }
 
+    .about-credentials-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+
+    .about-credentials-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-medium);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .about-credentials-list li .check {
+      color: var(--primary);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .about-credentials-list li strong {
+      color: var(--text-dark);
+    }
+
     .credentials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1152,47 +1179,49 @@
         <div class="about-text">
         <p>Mám vystudovaný obor speciální pedagogiky na <strong>Masarykově univerzitě</strong>, součástí vysokoškolského vzdělání byla i státní zkouška z psychologie. V současnosti jsem frekventantkou <strong>5. ročníku integrativního výcviku „Life Dynamic"</strong> (Elio, z.s.).</p>
         <br>
-        <p>Absolvovala jsem:
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Komplexní výcvik v krizové intervenci</strong> se zaměřením na děti a mládež (Velký vůz Sever, z.ú.) - 160 hod.
+        <p>Absolvovala jsem:</p>
+        <ul class="about-credentials-list">
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Komplexní výcvik v krizové intervenci</strong> — se zaměřením na děti a mládež (Velký vůz Sever, z.ú.) — 160 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Základní krizová intervence</strong> (Remedium Praha) - 56 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Základní krizová intervence</strong> — (Remedium Praha) — 56 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Aplikovaná krizová intervence</strong>, práce s klientem se sebevražednými tendencemi (Diecezní charita Brno) - 8 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Aplikovaná krizová intervence</strong> — práce s klientem se sebevražednými tendencemi (Diecézní charita Brno) — 8 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Možnosti intervence v dětské skupině zasažené smrtí blízkého</strong> (Vigvam, z.ú.) - 16 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Možnosti intervence v dětské skupině zasažené smrtí blízkého</strong> — (Vigvam, z.ú.) — 16 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Kurz úzkosti a stresu dětí</strong> (Mansio v.o.s.) - 16 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Kurz úzkosti a stresu dětí</strong> — (Mansio v.o.s.) — 16 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Motivační rozhovory I.+II.</strong> (Podané ruce o.p.s.) - 32 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Motivační rozhovory I.+II.</strong> — (Podané ruce o.p.s.) — 32 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Recovery - zotavení z duševního onemocnění</strong> (Adpontes) - 8 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Recovery — zotavení z duševního onemocnění</strong> — (Adpontes) — 8 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Seminář šikany ve školní třídě</strong> - prevence, rozpoznávání a intervence (Mgr. Bc. Marek Mikláš, MBA) - 8 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Seminář šikany ve školní třídě</strong> — prevence, rozpoznávání a intervence (Mgr. Bc. Marek Mikláš, MBA) — 8 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Seminář vedení rozhovoru s rodiči a žáky ve školní praxi</strong> - prevence, rozpoznávání a intervence (Mgr. Bc. Marek Mikláš, MBA) - 8 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Seminář vedení rozhovoru s rodiči a žáky ve školní praxi</strong> — prevence, rozpoznávání a intervence (Mgr. Bc. Marek Mikláš, MBA) — 8 hod.</div>
           </li>
-          <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-medium);">
-            <span style="color: var(--primary); font-weight: 700; flex-shrink: 0;">✓</span>
-            <strong>Seminář diagnostiky vztahu ve třídě</strong> (PhDr. Richard Braun, Ph.D.) - 8 hod.
+          <li>
+            <span class="check">✓</span>
+            <div><strong>Seminář diagnostiky vztahu ve třídě</strong> — (PhDr. Richard Braun, Ph.D.) — 8 hod.</div>
           </li>
+        </ul>
         </div>
       </div>
 
