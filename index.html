@@ -278,6 +278,30 @@
       color: var(--text-dark);
     }
 
+    .about-intro {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    .about-photo {
+      flex-shrink: 0;
+      width: 280px;
+    }
+
+    .about-photo img {
+      width: 100%;
+      border-radius: 16px 16px 0 0;
+      -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-intro .about-text {
+      margin-bottom: 0;
+    }
+
     .credentials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -383,8 +407,28 @@
       background: var(--bg-light);
     }
 
+    .approach-split {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .approach-image {
+      flex-shrink: 0;
+      width: 45%;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .approach-image img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      filter: brightness(1.05);
+    }
+
     .approach-content {
-      max-width: 640px;
+      flex: 1;
     }
 
     .approach-content h3 {
@@ -573,6 +617,28 @@
         font-size: 1.3rem;
       }
 
+      .about-intro {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-photo {
+        width: 200px;
+      }
+
+      .approach-split {
+        flex-direction: column;
+      }
+
+      .approach-image {
+        width: 100%;
+        max-height: 300px;
+      }
+
+      .approach-image img {
+        max-height: 300px;
+      }
+
       .credentials-grid {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -644,10 +710,15 @@
     <div class="section-container">
       <h2 class="section-title">O mně</h2>
       <p class="section-subtitle">Hana Komárková</p>
-      <div class="about-text">
+      <div class="about-intro">
+        <div class="about-photo">
+          <img src="assets/hero2.jpg" alt="Hana Komárková – psycholožka">
+        </div>
+        <div class="about-text">
         <p>Mám vystudovaný obor speciální pedagogiky na <strong>Masarykově univerzitě</strong>, součástí mého tohoto vysokoškolského vzdělání byla i státní zkouška z psychologie. V současnosti jsem frekventantkou <strong>5. ročníku integrativního výcviku „Life Dynamic"</strong> (Eliot z.s.).</p>
         <br>
         <p>Absolvovala jsem <strong>Komplexní výcvik v krizové intervenci</strong> (pro dospělé, děti a mládež), Motivační rozhovory I.+II., Úzkosti a stresem u dětí, Možnosti intervence v dětské skupině zasažené smrtí blízkého (Vigvam), Základní krizová intervence (Remedium), Krizé a sebevražedné jednání (Diecézní charita), Recovery, Cesta hrdiny.</p>
+        </div>
       </div>
 
       <div class="credentials-grid">
@@ -791,12 +862,17 @@
   <!-- MŮJ TERAPEUTICKÝ PŘÍSTUP -->
   <section class="section approach">
     <div class="section-container">
-      <div class="approach-content">
-        <h3>Můj terapeutický přístup</h3>
+      <div class="approach-split">
+        <div class="approach-image">
+          <img src="assets/room.jpg" alt="Terapeutická místnost" loading="lazy">
+        </div>
+        <div class="approach-content">
+          <h3>Můj terapeutický přístup</h3>
         <p>V terapii kombinuji prvky kognitivně-behaviorální a humanistické školy. Zaměřuji se na bezpečné prostředí, porozumění, respekt a podporu změny. Pracuji individuálně, v souladu s potřebami klientky či klienta.</p>
         <div class="price-info">
           <strong>Cena individuální konzultace je 900 Kč za 50 minut.</strong><br>
           Sezení probíhají osobně i online dle domluvy.
+        </div>
         </div>
       </div>
     </div>
