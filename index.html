@@ -159,33 +159,37 @@
       overflow: hidden;
     }
 
+    /* Noise texture overlay */
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(ellipse 45% 40% at 15% 25%, rgba(130,235,225,0.30) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 45% at 75% 65%, rgba(78,205,196,0.28) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 50% at 55% 15%, rgba(58,181,173,0.22) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 35% at 30% 75%, rgba(38,140,132,0.18) 0%, transparent 70%);
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+      opacity: 0.5;
       pointer-events: none;
-      animation: blobLayer1 18s ease-in-out infinite alternate;
+      z-index: 1;
+      mix-blend-mode: overlay;
     }
 
     .hero::after {
       content: '';
       position: absolute;
-      inset: 0;
+      inset: -20%;
       background:
-        radial-gradient(ellipse 40% 55% at 80% 25%, rgba(160,245,238,0.25) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 40% at 25% 55%, rgba(78,205,196,0.22) 0%, transparent 65%),
-        radial-gradient(ellipse 30% 45% at 60% 80%, rgba(45,160,152,0.20) 0%, transparent 70%);
-      animation: blobLayer2 22s ease-in-out infinite alternate;
+        radial-gradient(circle 600px at 20% 30%, rgba(78,205,196,0.35) 0%, transparent 70%),
+        radial-gradient(circle 500px at 75% 60%, rgba(58,181,173,0.30) 0%, transparent 65%),
+        radial-gradient(circle 400px at 50% 80%, rgba(38,140,132,0.25) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
+      animation: heroAfterDrift 30s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes heroAfterDrift {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(3%, -2%) scale(1.03); }
+      100% { transform: translate(-2%, 3%) scale(0.98); }
     }
 
     /* Bottom fade-out for seamless blend into next section */
@@ -200,49 +204,76 @@
       z-index: 1;
     }
 
-    @keyframes blobLayer1 {
-      0% {
-        background:
-          radial-gradient(ellipse 45% 40% at 15% 25%, rgba(130,235,225,0.30) 0%, transparent 70%),
-          radial-gradient(ellipse 50% 45% at 75% 65%, rgba(78,205,196,0.28) 0%, transparent 70%),
-          radial-gradient(ellipse 35% 50% at 55% 15%, rgba(58,181,173,0.22) 0%, transparent 70%),
-          radial-gradient(ellipse 40% 35% at 30% 75%, rgba(38,140,132,0.18) 0%, transparent 70%);
-      }
-      50% {
-        background:
-          radial-gradient(ellipse 50% 45% at 25% 40%, rgba(130,235,225,0.35) 0%, transparent 70%),
-          radial-gradient(ellipse 45% 50% at 65% 50%, rgba(78,205,196,0.32) 0%, transparent 70%),
-          radial-gradient(ellipse 40% 40% at 45% 25%, rgba(58,181,173,0.25) 0%, transparent 70%),
-          radial-gradient(ellipse 35% 40% at 20% 65%, rgba(38,140,132,0.20) 0%, transparent 70%);
-      }
-      100% {
-        background:
-          radial-gradient(ellipse 40% 50% at 35% 20%, rgba(130,235,225,0.28) 0%, transparent 70%),
-          radial-gradient(ellipse 55% 40% at 80% 45%, rgba(78,205,196,0.30) 0%, transparent 70%),
-          radial-gradient(ellipse 45% 45% at 50% 30%, rgba(58,181,173,0.24) 0%, transparent 70%),
-          radial-gradient(ellipse 38% 42% at 15% 80%, rgba(38,140,132,0.22) 0%, transparent 70%);
-      }
+    /* Gradient layer animations (GPU-accelerated via transform) */
+    .hero-gradient {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      will-change: transform, opacity;
     }
 
-    @keyframes blobLayer2 {
-      0% {
-        background:
-          radial-gradient(ellipse 40% 55% at 80% 25%, rgba(160,245,238,0.25) 0%, transparent 65%),
-          radial-gradient(ellipse 55% 40% at 25% 55%, rgba(78,205,196,0.22) 0%, transparent 65%),
-          radial-gradient(ellipse 30% 45% at 60% 80%, rgba(45,160,152,0.20) 0%, transparent 70%);
-      }
-      50% {
-        background:
-          radial-gradient(ellipse 50% 45% at 70% 40%, rgba(160,245,238,0.30) 0%, transparent 65%),
-          radial-gradient(ellipse 45% 50% at 35% 70%, rgba(78,205,196,0.28) 0%, transparent 65%),
-          radial-gradient(ellipse 40% 40% at 50% 60%, rgba(45,160,152,0.24) 0%, transparent 70%);
-      }
-      100% {
-        background:
-          radial-gradient(ellipse 45% 50% at 60% 35%, rgba(160,245,238,0.22) 0%, transparent 65%),
-          radial-gradient(ellipse 50% 45% at 40% 45%, rgba(78,205,196,0.26) 0%, transparent 65%),
-          radial-gradient(ellipse 35% 50% at 75% 70%, rgba(45,160,152,0.22) 0%, transparent 70%);
-      }
+    .hero-gradient.g1 {
+      width: 700px; height: 600px;
+      top: -15%; left: -10%;
+      background: radial-gradient(circle, rgba(130,235,225,0.45) 0%, rgba(78,205,196,0.15) 50%, transparent 70%);
+      animation: gFloat1 25s ease-in-out infinite;
+    }
+
+    .hero-gradient.g2 {
+      width: 600px; height: 550px;
+      top: 40%; right: -15%;
+      background: radial-gradient(circle, rgba(78,205,196,0.40) 0%, rgba(58,181,173,0.12) 50%, transparent 70%);
+      animation: gFloat2 30s ease-in-out infinite;
+    }
+
+    .hero-gradient.g3 {
+      width: 500px; height: 500px;
+      bottom: -10%; left: 20%;
+      background: radial-gradient(circle, rgba(58,181,173,0.35) 0%, rgba(38,140,132,0.10) 50%, transparent 70%);
+      animation: gFloat3 28s ease-in-out infinite;
+    }
+
+    .hero-gradient.g4 {
+      width: 450px; height: 400px;
+      top: 15%; left: 40%;
+      background: radial-gradient(circle, rgba(160,245,238,0.30) 0%, rgba(130,235,225,0.08) 50%, transparent 70%);
+      animation: gFloat4 22s ease-in-out infinite;
+    }
+
+    .hero-gradient.g5 {
+      width: 550px; height: 480px;
+      top: 60%; left: 5%;
+      background: radial-gradient(circle, rgba(45,160,152,0.28) 0%, rgba(38,140,132,0.08) 50%, transparent 70%);
+      animation: gFloat5 26s ease-in-out infinite;
+    }
+
+    @keyframes gFloat1 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+      33% { transform: translate(40px, 30px) scale(1.08); opacity: 1; }
+      66% { transform: translate(-20px, -15px) scale(0.95); opacity: 0.7; }
+    }
+
+    @keyframes gFloat2 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+      33% { transform: translate(-35px, -25px) scale(1.05); opacity: 0.9; }
+      66% { transform: translate(25px, 20px) scale(0.93); opacity: 0.8; }
+    }
+
+    @keyframes gFloat3 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.75; }
+      50% { transform: translate(30px, -20px) scale(1.1); opacity: 1; }
+    }
+
+    @keyframes gFloat4 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+      33% { transform: translate(-25px, 20px) scale(1.06); opacity: 0.9; }
+      66% { transform: translate(15px, -10px) scale(0.97); opacity: 0.7; }
+    }
+
+    @keyframes gFloat5 {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.65; }
+      50% { transform: translate(-20px, -30px) scale(1.08); opacity: 0.85; }
     }
 
     /* Floating decorative shapes */
@@ -253,92 +284,7 @@
       overflow: hidden;
     }
 
-    .hero-decor .blob {
-      position: absolute;
-      border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
-      filter: blur(30px);
-      opacity: 0;
-    }
 
-    .hero-decor .blob:nth-child(1) {
-      width: 420px; height: 380px;
-      top: -5%; left: -5%;
-      background: rgba(130,235,225,0.30);
-      animation: blob1 20s ease-in-out infinite;
-    }
-
-    .hero-decor .blob:nth-child(2) {
-      width: 350px; height: 320px;
-      top: 50%; right: -8%;
-      background: rgba(78,205,196,0.28);
-      animation: blob2 24s ease-in-out infinite;
-    }
-
-    .hero-decor .blob:nth-child(3) {
-      width: 280px; height: 300px;
-      top: 10%; right: 15%;
-      background: rgba(58,181,173,0.22);
-      animation: blob3 18s ease-in-out infinite;
-    }
-
-    .hero-decor .blob:nth-child(4) {
-      width: 380px; height: 340px;
-      bottom: 0%; left: 10%;
-      background: rgba(38,140,132,0.20);
-      animation: blob4 22s ease-in-out infinite;
-    }
-
-    .hero-decor .blob:nth-child(5a) {
-      width: 250px; height: 270px;
-      top: 30%; left: 35%;
-      background: rgba(160,245,238,0.18);
-      animation: blob5 26s ease-in-out infinite;
-    }
-
-    .hero-decor .blob:nth-child(6a) {
-      width: 300px; height: 260px;
-      top: 65%; left: 50%;
-      background: rgba(45,160,152,0.16);
-      animation: blob6 20s ease-in-out infinite;
-    }
-
-    @keyframes blob1 {
-      0%, 100% { opacity: 0.7; transform: translate(0, 0) scale(1); border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%; }
-      25% { opacity: 1; transform: translate(40px, 30px) scale(1.1); border-radius: 55% 45% 40% 60% / 45% 55% 50% 50%; }
-      50% { opacity: 0.8; transform: translate(20px, -20px) scale(0.95); border-radius: 50% 50% 60% 40% / 40% 60% 45% 55%; }
-      75% { opacity: 0.9; transform: translate(-20px, 15px) scale(1.05); border-radius: 45% 55% 50% 50% / 60% 40% 55% 45%; }
-    }
-
-    @keyframes blob2 {
-      0%, 100% { opacity: 0.6; transform: translate(0, 0) scale(1); border-radius: 50% 50% 45% 55% / 55% 45% 50% 50%; }
-      25% { opacity: 0.9; transform: translate(-35px, -25px) scale(1.08); border-radius: 45% 55% 60% 40% / 50% 50% 45% 55%; }
-      50% { opacity: 0.7; transform: translate(-15px, 30px) scale(0.92); border-radius: 60% 40% 50% 50% / 45% 55% 40% 60%; }
-      75% { opacity: 1; transform: translate(20px, -10px) scale(1.04); border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%; }
-    }
-
-    @keyframes blob3 {
-      0%, 100% { opacity: 0.5; transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 55% 45% 50% 50% / 50% 50% 55% 45%; }
-      33% { opacity: 0.9; transform: translate(-30px, 25px) scale(1.12) rotate(5deg); border-radius: 45% 55% 40% 60% / 60% 40% 50% 50%; }
-      66% { opacity: 0.7; transform: translate(25px, -15px) scale(0.9) rotate(-3deg); border-radius: 50% 50% 55% 45% / 45% 55% 50% 50%; }
-    }
-
-    @keyframes blob4 {
-      0%, 100% { opacity: 0.6; transform: translate(0, 0) scale(1); border-radius: 45% 55% 50% 50% / 50% 50% 45% 55%; }
-      25% { opacity: 0.8; transform: translate(30px, -20px) scale(1.06); border-radius: 55% 45% 55% 45% / 45% 55% 50% 50%; }
-      50% { opacity: 1; transform: translate(-20px, -35px) scale(1.1); border-radius: 50% 50% 40% 60% / 55% 45% 60% 40%; }
-      75% { opacity: 0.7; transform: translate(15px, 10px) scale(0.95); border-radius: 40% 60% 50% 50% / 50% 50% 55% 45%; }
-    }
-
-    @keyframes blob5 {
-      0%, 100% { opacity: 0.5; transform: translate(0, 0) scale(1); border-radius: 50% 50% 45% 55% / 45% 55% 50% 50%; }
-      33% { opacity: 0.8; transform: translate(20px, -30px) scale(1.08); border-radius: 55% 45% 50% 50% / 50% 50% 55% 45%; }
-      66% { opacity: 0.6; transform: translate(-25px, 20px) scale(0.94); border-radius: 45% 55% 55% 45% / 55% 45% 45% 55%; }
-    }
-
-    @keyframes blob6 {
-      0%, 100% { opacity: 0.5; transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 55% 45% 45% 55% / 50% 50% 50% 50%; }
-      50% { opacity: 0.8; transform: translate(-30px, -20px) scale(1.1) rotate(4deg); border-radius: 45% 55% 55% 45% / 45% 55% 45% 55%; }
-    }
 
     /* Leaf SVG decorations */
     .hero-decor .leaf {
@@ -354,37 +300,37 @@
       opacity: 0.18;
     }
 
-    .hero-decor .leaf:nth-child(5) {
+    .hero-decor .leaf:nth-child(1) {
       top: 8%; left: 5%;
       animation-delay: -2s;
       animation-name: floatLeaf0;
     }
 
-    .hero-decor .leaf:nth-child(6) {
+    .hero-decor .leaf:nth-child(2) {
       top: 60%; right: 6%;
       animation-delay: -6s;
       animation-name: floatLeaf45m;
     }
 
-    .hero-decor .leaf:nth-child(7) {
+    .hero-decor .leaf:nth-child(3) {
       bottom: 30%; left: 60%;
       animation-delay: -10s;
       animation-name: floatLeaf330;
     }
 
-    .hero-decor .leaf:nth-child(8) {
+    .hero-decor .leaf:nth-child(4) {
       top: 35%; right: 20%;
       animation-delay: -14s;
       animation-name: floatLeaf120m;
     }
 
-    .hero-decor .leaf:nth-child(9) {
+    .hero-decor .leaf:nth-child(5) {
       bottom: 10%; left: 25%;
       animation-delay: -18s;
       animation-name: floatLeaf200;
     }
 
-    .hero-decor .leaf:nth-child(10) {
+    .hero-decor .leaf:nth-child(6) {
       top: 75%; left: 40%;
       animation-delay: -22s;
       animation-name: floatLeaf285m;
@@ -1018,13 +964,13 @@
   <!-- HERO -->
   <section class="hero">
     <!-- Floating decorative shapes -->
+    <!-- Smooth gradient layers (GPU-accelerated) -->
+    <div class="hero-gradient g1"></div>
+    <div class="hero-gradient g2"></div>
+    <div class="hero-gradient g3"></div>
+    <div class="hero-gradient g4"></div>
+    <div class="hero-gradient g5"></div>
     <div class="hero-decor">
-      <div class="blob"></div>
-      <div class="blob"></div>
-      <div class="blob"></div>
-      <div class="blob"></div>
-      <div class="blob"></div>
-      <div class="blob"></div>
       <div class="leaf" style="width:90px;height:90px;">
         <img src="assets/leaf-icon.png" alt="">
       </div>
