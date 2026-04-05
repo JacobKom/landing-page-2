@@ -178,18 +178,19 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 20% 80%, rgba(78,205,196,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(78,205,196,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 60% at 50% 50%, rgba(78,205,196,0.04) 0%, transparent 70%);
+        radial-gradient(ellipse 80% 50% at 20% 80%, rgba(78,205,196,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(78,205,196,0.20) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 50% 50%, rgba(78,205,196,0.15) 0%, transparent 70%);
       animation: ambientShift 12s ease-in-out infinite alternate;
       pointer-events: none;
+      z-index: 0;
     }
 
     @keyframes ambientShift {
-      0% { opacity: 0.4; transform: scale(1) translate(0, 0); }
-      33% { opacity: 0.7; transform: scale(1.05) translate(10px, -10px); }
-      66% { opacity: 0.5; transform: scale(0.98) translate(-10px, 5px); }
-      100% { opacity: 0.8; transform: scale(1.03) translate(5px, -5px); }
+      0% { opacity: 0.6; transform: scale(1) translate(0, 0); }
+      33% { opacity: 1; transform: scale(1.08) translate(15px, -15px); }
+      66% { opacity: 0.7; transform: scale(0.95) translate(-15px, 10px); }
+      100% { opacity: 1; transform: scale(1.05) translate(10px, -10px); }
     }
 
     /* Floating decorative shapes */
@@ -208,30 +209,30 @@
     }
 
     .hero-decor .shape:nth-child(1) {
-      width: 300px; height: 300px;
-      top: 10%; left: -5%;
-      background: radial-gradient(circle, rgba(78,205,196,0.12) 0%, transparent 70%);
+      width: 350px; height: 350px;
+      top: 5%; left: -8%;
+      background: radial-gradient(circle, rgba(78,205,196,0.30) 0%, transparent 70%);
       animation-delay: 0s;
     }
 
     .hero-decor .shape:nth-child(2) {
-      width: 200px; height: 200px;
-      top: 60%; right: -3%;
-      background: radial-gradient(circle, rgba(78,205,196,0.10) 0%, transparent 70%);
+      width: 250px; height: 250px;
+      top: 55%; right: -5%;
+      background: radial-gradient(circle, rgba(78,205,196,0.25) 0%, transparent 70%);
       animation-delay: -5s;
     }
 
     .hero-decor .shape:nth-child(3) {
-      width: 150px; height: 150px;
-      top: 20%; right: 15%;
-      background: radial-gradient(circle, rgba(78,205,196,0.08) 0%, transparent 70%);
+      width: 200px; height: 200px;
+      top: 15%; right: 12%;
+      background: radial-gradient(circle, rgba(78,205,196,0.20) 0%, transparent 70%);
       animation-delay: -10s;
     }
 
     .hero-decor .shape:nth-child(4) {
-      width: 250px; height: 250px;
-      bottom: 10%; left: 20%;
-      background: radial-gradient(circle, rgba(78,205,196,0.09) 0%, transparent 70%);
+      width: 300px; height: 300px;
+      bottom: 5%; left: 15%;
+      background: radial-gradient(circle, rgba(78,205,196,0.22) 0%, transparent 70%);
       animation-delay: -15s;
     }
 
@@ -243,7 +244,7 @@
     }
 
     .hero-decor .leaf svg {
-      fill: rgba(78,205,196,0.08);
+      fill: rgba(78,205,196,0.25);
     }
 
     .hero-decor .leaf:nth-child(5) {
@@ -264,17 +265,17 @@
     }
 
     @keyframes floatShape {
-      0%, 100% { opacity: 0.3; transform: translate(0, 0) scale(1); }
-      25% { opacity: 0.6; transform: translate(15px, -20px) scale(1.05); }
-      50% { opacity: 0.4; transform: translate(-10px, 10px) scale(0.95); }
-      75% { opacity: 0.7; transform: translate(10px, 15px) scale(1.02); }
+      0%, 100% { opacity: 0.6; transform: translate(0, 0) scale(1); }
+      25% { opacity: 1; transform: translate(20px, -25px) scale(1.08); }
+      50% { opacity: 0.7; transform: translate(-15px, 15px) scale(0.92); }
+      75% { opacity: 1; transform: translate(15px, 20px) scale(1.05); }
     }
 
     @keyframes floatLeaf {
-      0%, 100% { opacity: 0.4; transform: translate(0, 0) rotate(0deg); }
-      25% { opacity: 0.7; transform: translate(10px, -15px) rotate(5deg); }
-      50% { opacity: 0.5; transform: translate(-8px, 8px) rotate(-3deg); }
-      75% { opacity: 0.8; transform: translate(5px, 12px) rotate(4deg); }
+      0%, 100% { opacity: 0.6; transform: translate(0, 0) rotate(0deg); }
+      25% { opacity: 1; transform: translate(12px, -18px) rotate(8deg); }
+      50% { opacity: 0.7; transform: translate(-10px, 10px) rotate(-5deg); }
+      75% { opacity: 1; transform: translate(8px, 15px) rotate(6deg); }
     }
 
     /* Hero intro text */
