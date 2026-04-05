@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./assets/leaf-icon.png">
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('KpS2aKOLFGwa4WcL_');</script>
   <style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after {
@@ -1490,7 +1493,7 @@
       </div>
 
       <div class="contact-layout">
-        <form class="contact-form" action="#" method="POST">
+        <form class="contact-form" id="contact-form">
           <div class="form-group">
             <input type="text" id="name" name="name" placeholder="Vaše jméno" required>
           </div>
@@ -1574,6 +1577,39 @@
       link.addEventListener('click', () => {
         document.getElementById('navLinks').classList.remove('active');
       });
+    });
+
+    // EmailJS form handler
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.btn-primary');
+      const originalText = btn.textContent;
+      btn.textContent = 'Odesílám...';
+      btn.disabled = true;
+
+      emailjs.sendForm('service_oeaoo7q', 'template_9d5nxzr', this)
+        .then(function() {
+          btn.textContent = '✓ Odesláno!';
+          btn.style.background = '#2ecc71';
+          btn.style.borderColor = '#2ecc71';
+          document.getElementById('contact-form').reset();
+          setTimeout(function() {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.disabled = false;
+          }, 3000);
+        }, function(error) {
+          btn.textContent = 'Chyba – zkuste znovu';
+          btn.style.background = '#e74c3c';
+          btn.style.borderColor = '#e74c3c';
+          setTimeout(function() {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.disabled = false;
+          }, 3000);
+        });
     });
   </script>
 
