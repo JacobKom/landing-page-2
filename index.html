@@ -172,6 +172,165 @@
       pointer-events: none;
     }
 
+    /* Animated gradient overlay (ambient video effect) */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 80%, rgba(78,205,196,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(78,205,196,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 50% 50%, rgba(78,205,196,0.04) 0%, transparent 70%);
+      animation: ambientShift 12s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes ambientShift {
+      0% { opacity: 0.4; transform: scale(1) translate(0, 0); }
+      33% { opacity: 0.7; transform: scale(1.05) translate(10px, -10px); }
+      66% { opacity: 0.5; transform: scale(0.98) translate(-10px, 5px); }
+      100% { opacity: 0.8; transform: scale(1.03) translate(5px, -5px); }
+    }
+
+    /* Floating decorative shapes */
+    .hero-decor {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-decor .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatShape 20s ease-in-out infinite;
+    }
+
+    .hero-decor .shape:nth-child(1) {
+      width: 300px; height: 300px;
+      top: 10%; left: -5%;
+      background: radial-gradient(circle, rgba(78,205,196,0.12) 0%, transparent 70%);
+      animation-delay: 0s;
+    }
+
+    .hero-decor .shape:nth-child(2) {
+      width: 200px; height: 200px;
+      top: 60%; right: -3%;
+      background: radial-gradient(circle, rgba(78,205,196,0.10) 0%, transparent 70%);
+      animation-delay: -5s;
+    }
+
+    .hero-decor .shape:nth-child(3) {
+      width: 150px; height: 150px;
+      top: 20%; right: 15%;
+      background: radial-gradient(circle, rgba(78,205,196,0.08) 0%, transparent 70%);
+      animation-delay: -10s;
+    }
+
+    .hero-decor .shape:nth-child(4) {
+      width: 250px; height: 250px;
+      bottom: 10%; left: 20%;
+      background: radial-gradient(circle, rgba(78,205,196,0.09) 0%, transparent 70%);
+      animation-delay: -15s;
+    }
+
+    /* Leaf SVG decorations */
+    .hero-decor .leaf {
+      position: absolute;
+      opacity: 0;
+      animation: floatLeaf 25s ease-in-out infinite;
+    }
+
+    .hero-decor .leaf svg {
+      fill: rgba(78,205,196,0.08);
+    }
+
+    .hero-decor .leaf:nth-child(5) {
+      top: 15%; left: 8%;
+      animation-delay: -3s;
+    }
+
+    .hero-decor .leaf:nth-child(6) {
+      top: 70%; right: 10%;
+      transform: rotate(45deg);
+      animation-delay: -8s;
+    }
+
+    .hero-decor .leaf:nth-child(7) {
+      bottom: 25%; left: 65%;
+      transform: rotate(-30deg);
+      animation-delay: -13s;
+    }
+
+    @keyframes floatShape {
+      0%, 100% { opacity: 0.3; transform: translate(0, 0) scale(1); }
+      25% { opacity: 0.6; transform: translate(15px, -20px) scale(1.05); }
+      50% { opacity: 0.4; transform: translate(-10px, 10px) scale(0.95); }
+      75% { opacity: 0.7; transform: translate(10px, 15px) scale(1.02); }
+    }
+
+    @keyframes floatLeaf {
+      0%, 100% { opacity: 0.4; transform: translate(0, 0) rotate(0deg); }
+      25% { opacity: 0.7; transform: translate(10px, -15px) rotate(5deg); }
+      50% { opacity: 0.5; transform: translate(-8px, 8px) rotate(-3deg); }
+      75% { opacity: 0.8; transform: translate(5px, 12px) rotate(4deg); }
+    }
+
+    /* Hero intro text */
+    .hero-intro {
+      font-size: 0.95rem;
+      color: var(--text-medium);
+      margin-bottom: 12px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-description {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator .arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid var(--primary);
+      border-bottom: 2px solid var(--primary);
+      transform: rotate(45deg);
+      animation: bounceArrow 2s ease-in-out infinite;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.5; }
+      50% { transform: rotate(45deg) translate(4px, 4px); opacity: 1; }
+    }
+
     .hero-content {
       position: relative;
       z-index: 1;
@@ -193,7 +352,7 @@
       font-weight: 700;
       color: var(--primary-dark);
       font-style: italic;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .hero-buttons {
@@ -695,14 +854,37 @@
 
   <!-- HERO -->
   <section class="hero">
+    <!-- Floating decorative shapes -->
+    <div class="hero-decor">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="leaf" style="width:80px;height:80px;">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 4C32 4 8 20 8 40c0 12 10 20 24 20s24-8 24-20C56 20 32 4 32 4zM32 52c-2 0-4-8-4-20s2-20 4-20c2 0 4 8 4 20s-2 20-4 20z"/></svg>
+      </div>
+      <div class="leaf" style="width:60px;height:60px;">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 4C32 4 8 20 8 40c0 12 10 20 24 20s24-8 24-20C56 20 32 4 32 4zM32 52c-2 0-4-8-4-20s2-20 4-20c2 0 4 8 4 20s-2 20-4 20z"/></svg>
+      </div>
+      <div class="leaf" style="width:50px;height:50px;">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 4C32 4 8 20 8 40c0 12 10 20 24 20s24-8 24-20C56 20 32 4 32 4zM32 52c-2 0-4-8-4-20s2-20 4-20c2 0 4 8 4 20s-2 20-4 20z"/></svg>
+      </div>
+    </div>
     <div class="hero-content">
+      <p class="hero-intro">Mgr. Hana Komárková – psycholožka a terapeutka</p>
       <h1>Vaše cesta ke uzdravení a růstu</h1>
       <p class="subtitle">Empatie. Podpora. Důvěra.</p>
+      <p class="hero-description">Nabízím bezpečný prostor pro vaši cestu ke změně. Společně najdeme způsob, jak zvládnout to, co vás trápí.</p>
       <div class="hero-buttons">
         <a href="#kontakt" class="btn btn-primary">Objednat konzultaci</a>
         <a href="#o-mne" class="btn btn-outline">O mně</a>
       </div>
     </div>
+    <!-- Scroll indicator -->
+    <a href="#o-mne" class="scroll-indicator">
+      <span>Více</span>
+      <div class="arrow"></div>
+    </a>
   </section>
 
   <!-- O MNĚ -->
